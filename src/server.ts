@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express";
-import express from 'express';
-import dotenv from 'dotenv';
-import * as path from 'path';
+import * as express from 'express'
+import * as dotenv from 'dotenv';
+import "reflect-metadata";
 
 const server: express.Application = express();
 dotenv.config({
-    path:"./config/.env"
+    path: "./config/.env"
 });
 
 server.get('/', (req: Request, res: Response) => {
