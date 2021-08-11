@@ -1,18 +1,30 @@
-import { Request, Response, NextFunction } from "express";
 import * as express from 'express'
 import * as dotenv from 'dotenv';
+import * as cors from 'cors';
+import { createConnection } from "typeorm";
 import "reflect-metadata";
+import routes from "./routes/index";
 
 const server: express.Application = express();
+
 dotenv.config({
-    path: "./config/.env"
+	path: "./config/.env"
 });
 
-server.get('/', (req: Request, res: Response) => {
-    res.send("test");
+server.use(cors());
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
+
+server.use('/', routes);
+
+const port = process.env.port || 5000;
+
+createConnection().then(() => {
+	server.listen(port, () => {
+		console.log(`small talk helper server on ${port}.............`);
+	});
+}
+).catch(e => {
+	console.log(e);
 })
 
-server.listen(5000, () => {
-    console.log("test");
-    console.log(process.env.test);
-});
