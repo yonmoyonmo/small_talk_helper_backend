@@ -5,3 +5,4 @@ dist/
 tmp/
 temp/
 config/.env
+ormconfig.json
