@@ -21,10 +21,9 @@ const port = process.env.port || 5000;
 
 createConnection().then(() => {
 	server.listen(port, () => {
-		console.log(`small talk helper server on ${port}.............`);
+		console.log(`small talk helper server on ${port}`);
 	});
-}
-).catch(e => {
-	console.log(e);
+}).catch(e => {
+	throw new Error(e);
 })
 

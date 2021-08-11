@@ -5,7 +5,7 @@ export class Admin {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
+	@Column({unique:true})
 	admin_name: string;
 
 	@Column()
