@@ -11,10 +11,10 @@ export class Sugguestion {
   @Column({ type: "text" })
   sugguestion_text: string;
 
-  @Column()
+  @Column({ default: 0 })
   count_likes: number;
 
-  @Column()
+  @Column({ default: 0 })
   count_dislikes: number;
 
   @CreateDateColumn()

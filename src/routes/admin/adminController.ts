@@ -24,7 +24,7 @@ adminController.post('/login', async (req, res) => {
   if (result) {
     const { admin_name } = req.body
     const secret = process.env.jwtSecret;
-    const token = await jwt.sign({ data: admin_name }, secret, { expiresIn: "3h" });
+    const token = await jwt.sign({ adminName: admin_name }, secret, { expiresIn: "3h" });
     res.status(200).json({ success: true, message: "logged in", token: token });
   } else {
     res.status(500).json({ success: false, message: "loggin failed", token: null});
