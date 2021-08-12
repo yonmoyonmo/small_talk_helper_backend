@@ -1,4 +1,3 @@
-import { resolve } from 'dns';
 import * as express from 'express'
 import * as sugguestionService from '../../services/suguestionService';
 
