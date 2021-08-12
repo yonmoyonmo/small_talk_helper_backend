@@ -39,7 +39,6 @@ sugguestionController.get('/list', async (req, res) => {
   if (count === 0) {
     res.status(200).json({ message: "empty" })
   } else {
-    console.log("sugguestion list element count : " + count);
     res.status(200).send(result);
   }
 });
