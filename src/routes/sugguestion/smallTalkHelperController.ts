@@ -38,4 +38,18 @@ smallTalkHelperController.get('/topten', async (req, res) => {
   }
 });
 
+smallTalkHelperController.post('/users-sugguestion', async (req, res)=>{
+  try{
+    const result = await smallTalkHelperService.createUserSugguestion(req);
+    if(result){
+      res.status(200).json({success: true})
+    }else{
+      res.status(500).json({success: false})
+    }
+  }catch(e){
+    console.error(e);
+    res.status(500).json({success: false})
+  }
+})
+
 export default smallTalkHelperController;

@@ -1,12 +1,14 @@
 import { Sugguestion } from "../entity/Sugguestion";
 import { getConnection } from "typeorm";
 import { Request } from "express";
+import { UserSugguestion } from "../entity/UserSugguestion";
+
 /**
  * to do list
  * random sugguestion (o)
  * like and dislike api (o)
  * top 10 liked sugguestion list (o)
- * user's sugguestion api
+ * user's sugguestion api (o)
  */
 
 export const getRandomSugguestion = async () => {
@@ -46,3 +48,16 @@ export const getTopTenList = async () => {
   }
 }
 
+export const createUserSugguestion = async (req: Request) => {
+  const { userName, text } = req.body;
+  const userSugguestionRepo = getConnection().getRepository(UserSugguestion);
+  const newUserSugguestion = new UserSugguestion();
+  newUserSugguestion.user_name = userName;
+  newUserSugguestion.text = text;
+  try {
+    await userSugguestionRepo.save(newUserSugguestion);
+    return true;
+  } catch (e) {
+    throw new Error(e);
+  }
+}
