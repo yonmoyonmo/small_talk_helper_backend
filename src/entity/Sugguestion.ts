@@ -14,9 +14,6 @@ export class Sugguestion {
   @Column({ default: 0 })
   count_likes: number;
 
-  @Column({ default: 0 })
-  count_dislikes: number;
-
   @CreateDateColumn()
   created_at: Date;
 
