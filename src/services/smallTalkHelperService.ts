@@ -32,6 +32,7 @@ export const applyLikes = async (req: Request) => {
   }
   try {
     await sugguestionRepo.save(target);
+    console.log(target);
     return true
   } catch (e) {
     throw new Error(e);

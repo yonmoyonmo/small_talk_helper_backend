@@ -5,6 +5,7 @@ const smallTalkHelperController = express.Router();
 
 // /sugguestion/small-talk-helper/random
 smallTalkHelperController.get('/random', async (req, res)=>{
+  console.log("/random");
   try{
     const result = await smallTalkHelperService.getRandomSugguestion();
     res.status(200).send(result);
@@ -15,6 +16,7 @@ smallTalkHelperController.get('/random', async (req, res)=>{
 });
 
 smallTalkHelperController.post('/likes', async (req, res)=>{
+  console.log("/likes");
   try{
     const result = await smallTalkHelperService.applyLikes(req);
     if(result){
@@ -29,6 +31,7 @@ smallTalkHelperController.post('/likes', async (req, res)=>{
 });
 
 smallTalkHelperController.get('/topten', async (req, res) => {
+  console.log("/topten");
   try{
     const result = await smallTalkHelperService.getTopTenList();
     res.status(200).send(result);
@@ -39,6 +42,7 @@ smallTalkHelperController.get('/topten', async (req, res) => {
 });
 
 smallTalkHelperController.post('/users-sugguestion', async (req, res)=>{
+  console.log("/users-sugguestion");
   try{
     const result = await smallTalkHelperService.createUserSugguestion(req);
     if(result){
