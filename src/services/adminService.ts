@@ -5,11 +5,15 @@ import { Admin } from '../entity/Admin';
 export const registerAdmin = async (req) => {
   const connection: Connection = getConnection();
   const adminRepo = connection.getRepository(Admin);
-  const { admin_name, password } = req.body;
+  const { admin_name, password, key } = req.body;
 
   if (!admin_name || !password) {
     console.error("no name no gain");
     return false
+  }
+  if(key !== process.env.wonmoSecret){
+    console.error("no key");
+    return false;
   }
 
   const saltRounds: number = parseInt(process.env.bcryptSaltRounds);

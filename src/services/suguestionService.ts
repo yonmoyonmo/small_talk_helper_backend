@@ -95,8 +95,6 @@ export const updateSugguestion = (req: Request) => {
 export const getSugguestionList = async (req: Request) => {
   const { page, limit } = req.query;
 
-  console.log(page + " : " + limit);
-
   const pageNumber = parseInt(page.toString());
   const limitNumber = parseInt(limit.toString());
 
@@ -130,6 +128,7 @@ export const deleteSugguestion = (req: Request) => {
             //after token validation
             const sugguestionRepo = getConnection().getRepository(Sugguestion);
             const body = req.body;
+            console.log(`delete target : ${body.id}`);
             const deleteResult: DeleteResult = await sugguestionRepo.delete(body.id);
             if (deleteResult.affected === null) {
               console.error("no sugguestion with id :" + body.id);
