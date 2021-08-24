@@ -15,7 +15,7 @@ server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
-server.use('/', routes);
+server.use('/api', routes);
 
 const port = process.env.port || 5000;
 
