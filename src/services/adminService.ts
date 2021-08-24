@@ -24,14 +24,6 @@ export const registerAdmin = async (req) => {
   const salt: string = await bcrypt.genSalt(saltRounds);
   const encrypted = await bcrypt.hash(password, salt);
 
-  // //--debug---
-  // console.log("debug : " + encrypted);
-  // const debug1 = await bcrypt.compare(password, encrypted);
-  // const debug2 = await bcrypt.compare("ssss", encrypted);
-  // console.log(debug1);
-  // console.log(debug2);
-  // //-------
-
   newAdmin.password = encrypted;
 
   try {
