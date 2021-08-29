@@ -3,6 +3,21 @@ import * as sugguestionService from '../../services/suguestionService';
 
 const sugguestionController = express.Router();
 
+sugguestionController.post('/register/multiple', (req, res)=>{
+  const result = sugguestionService.createMultipleSugguestion(req);
+  if (result) {
+    res.status(200).json({
+      message: "new sugguestions added",
+      success: true
+    });
+  } else {
+    res.status(500).json({
+      message: "inserting new sugguestions failed",
+      success: false
+    });
+  }
+});
+
 sugguestionController.post('/register', (req, res) => {
   const result = sugguestionService.createSuggestion(req);
   if (result) {
