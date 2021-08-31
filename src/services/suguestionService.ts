@@ -32,7 +32,7 @@ export const createMultipleSugguestion = (req:Request) =>{
             try {
               for(let i = 0; i < sugguTextArr.length; i++ ){
                 const newSugguestion = new Sugguestion();
-                newSugguestion.sugguestion_type = "volume01";
+                newSugguestion.sugguestion_type = body.type;
                 newSugguestion.sugguestion_text = sugguTextArr[i];
                 sugguestionRepo.save(newSugguestion).then(result => {
                   // console.log(i+1);
