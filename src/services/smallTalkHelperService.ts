@@ -17,6 +17,7 @@ export const getRandomSugguestion = async () => {
     const randomSugguestion = await sugguestionRepo.createQueryBuilder("sugguestion").orderBy("RAND()").getOne();
     return randomSugguestion;
   } catch (e) {
+    console.log(e);
     throw new Error(e);
   }
 }
@@ -35,6 +36,7 @@ export const applyLikes = async (req: Request) => {
     console.log(target);
     return true
   } catch (e) {
+    console.log(e);
     throw new Error(e);
   }
 }
@@ -45,6 +47,7 @@ export const getTopTenList = async () => {
     const getTopTenList = await sugguestionRepo.createQueryBuilder("sugguestion").orderBy("sugguestion.count_likes", "DESC").limit(10).getMany();
     return getTopTenList;
   } catch (e) {
+    console.log(e);
     throw new Error(e);
   }
 }
@@ -59,6 +62,18 @@ export const createUserSugguestion = async (req: Request) => {
     await userSugguestionRepo.save(newUserSugguestion);
     return true;
   } catch (e) {
+    console.log(e);
+    throw new Error(e);
+  }
+}
+
+export const getLove36Sugguestion = async () =>{
+  try{
+  const sugguestionRepo = getConnection().getRepository(Sugguestion);
+  const result = await sugguestionRepo.find({ where:{sugguestion_type:"love36"} });
+  return result;
+  }catch(e){
+    console.log(e);
     throw new Error(e);
   }
 }

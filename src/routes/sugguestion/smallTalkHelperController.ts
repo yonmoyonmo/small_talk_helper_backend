@@ -3,6 +3,17 @@ import * as smallTalkHelperService from '../../services/smallTalkHelperService';
 
 const smallTalkHelperController = express.Router();
 
+
+smallTalkHelperController.get('/love36', async (req, res)=>{
+  try{
+    const result = await smallTalkHelperService.getLove36Sugguestion();
+    res.status(200).send(result);
+  }catch(e){
+    console.error(e);
+    res.status(500).json({success: false})
+  }
+});
+
 // /sugguestion/small-talk-helper/random
 smallTalkHelperController.get('/random', async (req, res)=>{
   //console.log("/random");
