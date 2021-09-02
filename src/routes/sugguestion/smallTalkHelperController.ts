@@ -48,7 +48,6 @@ smallTalkHelperController.post('/likes', async (req, res)=>{
 });
 
 smallTalkHelperController.get('/topten', async (req, res) => {
-  //console.log("/topten");
   try{
     const result = await smallTalkHelperService.getTopTenList();
     res.status(200).send(result);
@@ -59,7 +58,6 @@ smallTalkHelperController.get('/topten', async (req, res) => {
 });
 
 smallTalkHelperController.post('/users-sugguestion', async (req, res)=>{
-  //console.log("/users-sugguestion");
   try{
     const result = await smallTalkHelperService.createUserSugguestion(req);
     if(result){
