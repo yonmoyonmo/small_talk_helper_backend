@@ -14,7 +14,9 @@ import { UserSugguestion } from "../entity/UserSugguestion";
 export const getRandomSugguestion = async () => {
   const sugguestionRepo = getConnection().getRepository(Sugguestion);
   try {
-    const randomSugguestion = await sugguestionRepo.createQueryBuilder("sugguestion").orderBy("RAND()").getOne();
+    const randomSugguestion = await sugguestionRepo.createQueryBuilder("sugguestion")
+    .where("sugguestion.sugguestion_type IN (:...types)", { types: ["volume01", "volume02", "vs"] })
+    .orderBy("RAND()").getOne();
     return randomSugguestion;
   } catch (e) {
     console.log(e);
@@ -76,4 +78,10 @@ export const getLove36Sugguestion = async () =>{
     console.log(e);
     throw new Error(e);
   }
+}
+
+export const getFavoriteSugguestion = async (req:Request) => {
+  const {favoriteList} = req.body;
+  const result = [];
+  return [];
 }

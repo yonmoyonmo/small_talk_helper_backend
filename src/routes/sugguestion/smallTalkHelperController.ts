@@ -3,6 +3,15 @@ import * as smallTalkHelperService from '../../services/smallTalkHelperService';
 
 const smallTalkHelperController = express.Router();
 
+smallTalkHelperController.post('/favorite', async (req, res)=>{
+  try{
+    const result = await smallTalkHelperService.getFavoriteSugguestion(req);
+    res.status(200).send(result);
+  }catch(e){
+    console.error(e);
+    res.status(500).json({success: false})
+  }
+});
 
 smallTalkHelperController.get('/love36', async (req, res)=>{
   try{
@@ -14,9 +23,7 @@ smallTalkHelperController.get('/love36', async (req, res)=>{
   }
 });
 
-// /sugguestion/small-talk-helper/random
 smallTalkHelperController.get('/random', async (req, res)=>{
-  //console.log("/random");
   try{
     const result = await smallTalkHelperService.getRandomSugguestion();
     res.status(200).send(result);
@@ -27,7 +34,6 @@ smallTalkHelperController.get('/random', async (req, res)=>{
 });
 
 smallTalkHelperController.post('/likes', async (req, res)=>{
-  //console.log("/likes");
   try{
     const result = await smallTalkHelperService.applyLikes(req);
     if(result){
