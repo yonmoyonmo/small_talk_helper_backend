@@ -15,7 +15,7 @@ export const getRandomSugguestion = async () => {
   const sugguestionRepo = getConnection().getRepository(Sugguestion);
   try {
     const randomSugguestion = await sugguestionRepo.createQueryBuilder("sugguestion")
-      .where("sugguestion.sugguestion_type IN (:...types)", { types: ["volume01", "volume02", "vs"] })
+      .where("sugguestion.sugguestion_type IN (:...types)", { types: ["volume01", "volume02", "vs", "user"] })
       .orderBy("RAND()").getOne();
     return randomSugguestion;
   } catch (e) {
