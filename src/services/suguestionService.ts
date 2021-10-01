@@ -3,8 +3,9 @@ import { Admin } from "../entity/Admin";
 import { DeleteResult, getConnection } from 'typeorm';
 import * as jwt from "jsonwebtoken";
 import { Request } from "express";
+import { UserSugguestion } from "../entity/UserSugguestion";
 
-export const createMultipleSugguestion = (req:Request) =>{
+export const createMultipleSugguestion = (req: Request) => {
   const secret: string = process.env.jwtSecret;
   const token = req.headers.authorization;
   if (!token) {
@@ -28,9 +29,9 @@ export const createMultipleSugguestion = (req:Request) =>{
             const sugguestionRepo = getConnection().getRepository(Sugguestion);
             const body = req.body;
             const sugguTextArr = body.sugguestionText.split('\n');
-            
+
             try {
-              for(let i = 0; i < sugguTextArr.length; i++ ){
+              for (let i = 0; i < sugguTextArr.length; i++) {
                 const newSugguestion = new Sugguestion();
                 newSugguestion.sugguestion_type = body.type;
                 newSugguestion.sugguestion_text = sugguTextArr[i];
@@ -149,6 +150,19 @@ export const getSugguestionList = async (req: Request) => {
   const offset = (pageNumber - 1) * limitNumber;
 
   const sugguestionRepo = getConnection().getRepository(Sugguestion);
+  const result = await sugguestionRepo.find({ skip: offset, take: limitNumber, order: { count_likes: "DESC" } });
+  return result;
+}
+
+export const getUserSugguestionList = async (req: Request) => {
+  const { page, limit } = req.query;
+
+  const pageNumber = parseInt(page.toString());
+  const limitNumber = parseInt(limit.toString());
+
+  const offset = (pageNumber - 1) * limitNumber;
+
+  const sugguestionRepo = getConnection().getRepository(UserSugguestion);
   const result = await sugguestionRepo.find({ skip: offset, take: limitNumber });
   return result;
 }

@@ -3,14 +3,6 @@ import { getConnection } from "typeorm";
 import { Request } from "express";
 import { UserSugguestion } from "../entity/UserSugguestion";
 
-/**
- * to do list
- * random sugguestion (o)
- * like and dislike api (o)
- * top 10 liked sugguestion list (o)
- * user's sugguestion api (o)
- */
-
 export const getRandomSugguestion = async () => {
   const sugguestionRepo = getConnection().getRepository(Sugguestion);
   try {
@@ -81,7 +73,7 @@ export const getLove36Sugguestion = async () => {
 
 export const getFavoriteSugguestion = async (req: Request) => {
   const { favoriteList } = req.body;
-  if(favoriteList.length === 0){
+  if (favoriteList.length === 0) {
     return [];
   }
   const sugguestionRepo = getConnection().getRepository(Sugguestion);
