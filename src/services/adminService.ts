@@ -11,7 +11,7 @@ export const registerAdmin = async (req) => {
     console.error("no name no gain");
     return false
   }
-  if(key !== process.env.wonmoSecret){
+  if (key !== process.env.wonmoSecret) {
     console.error("no key");
     return false;
   }
@@ -50,9 +50,9 @@ export const loginAdmin = async (req) => {
     .getOne();
   const match = await bcrypt.compare(password, admin.password);
 
-  if(match){
+  if (match) {
     return true;
-  }else{
+  } else {
     return false;
   }
 

@@ -4,12 +4,6 @@ import * as jwt from 'jsonwebtoken';
 
 const adminController = express.Router();
 
-adminController.get('/test', (req, res) => {
-  res.json({
-    testMessage: "test_admin_rouutes"
-  })
-})
-
 adminController.post('/register', async (req, res) => {
   const result = await adminService.registerAdmin(req);
   if (result) {
@@ -27,7 +21,7 @@ adminController.post('/login', async (req, res) => {
     const token = await jwt.sign({ adminName: admin_name }, secret, { expiresIn: "3h" });
     res.status(200).json({ success: true, message: "logged in", token: token });
   } else {
-    res.status(500).json({ success: false, message: "loggin failed", token: null});
+    res.status(500).json({ success: false, message: "loggin failed", token: null });
   }
 })
 
