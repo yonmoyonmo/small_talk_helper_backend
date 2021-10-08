@@ -8,10 +8,10 @@ const donatorController = express.Router();
 
 donatorController.post('/register', async (req, res) => {
   const result = await donatorService.registerDonator(req);
-  if (result) {
-    res.status(200).json({ success: true, message: "new admin is registered" });
+  if (result.success) {
+    res.status(200).json(result);
   } else {
-    res.status(500).json({ success: false, message: "new admin register failed" });
+    res.status(500).json(result);
   }
 });
 

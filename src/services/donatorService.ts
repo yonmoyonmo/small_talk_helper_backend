@@ -9,7 +9,14 @@ export const registerDonator = async (req) => {
 
   if (!donator_name || !password) {
     console.error("no name no gain");
-    return false
+    return { success: false, message: "no name, no password" };
+  }
+
+  const donator = await donatorRepo.createQueryBuilder("donator")
+    .where("donator.donator_name = :donator_name", { donator_name: donator_name })
+    .getOne();
+  if (donator) {
+    return { success: false, message: "fail", error: "duplicated name", dup: true };
   }
 
   const saltRounds: number = parseInt(process.env.bcryptSaltRounds);
@@ -22,9 +29,9 @@ export const registerDonator = async (req) => {
   try {
     await donatorRepo.save(newDonator);
     console.log(`new donator registerd : ${newDonator.donator_name}`);
-    return true
+    return { success: true, message: "success" };
   } catch (e) {
-    throw new Error(e);
+    return { success: false, message: "fail", error: e };
   }
 }
 
@@ -50,7 +57,6 @@ export const check = async (req) => {
       }
     } else return false;
   } catch (e) {
-    console.log(e);
-    return false;
+    throw new Error(e);
   }
 }
