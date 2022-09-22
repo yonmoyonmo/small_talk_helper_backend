@@ -1,5 +1,5 @@
 import * as express from 'express'
-import * as donatorService from '../../services/donatorService';
+import * as donatorService from '../../services/donatorService.js';
 
 
 const donatorController = express.Router();

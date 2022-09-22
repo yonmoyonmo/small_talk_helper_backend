@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import * as cors from 'cors';
 import { createConnection } from "typeorm";
 import "reflect-metadata";
-import routes from "./routes/index";
+import routes from "./routes/index.js";
 
 const server: express.Application = express();
 

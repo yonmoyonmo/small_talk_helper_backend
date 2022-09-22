@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { Connection, getConnection } from 'typeorm';
-import { Admin } from '../entity/Admin';
+import { Admin } from '../entity/Admin.js';
 
 export const registerAdmin = async (req) => {
   const connection: Connection = getConnection();

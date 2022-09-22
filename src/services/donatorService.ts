@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { Connection, getConnection } from 'typeorm';
-import { Donator } from '../entity/Donator';
+import { Donator } from '../entity/Donator.js';
 
 export const registerDonator = async (req) => {
   const connection: Connection = getConnection();

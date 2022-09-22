@@ -1,9 +1,9 @@
-import { Sugguestion } from "../entity/Sugguestion"
-import { Admin } from "../entity/Admin";
+import { Sugguestion } from "../entity/Sugguestion.js"
+import { Admin } from "../entity/Admin.js";
 import { DeleteResult, getConnection } from 'typeorm';
 import * as jwt from "jsonwebtoken";
 import { Request } from "express";
-import { UserSugguestion } from "../entity/UserSugguestion";
+import { UserSugguestion } from "../entity/UserSugguestion.js";
 
 export const createMultipleSugguestion = (req: Request) => {
   const secret: string = process.env.jwtSecret;

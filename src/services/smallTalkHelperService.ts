@@ -1,7 +1,7 @@
-import { Sugguestion } from "../entity/Sugguestion";
+import { Sugguestion } from "../entity/Sugguestion.js";
 import { getConnection } from "typeorm";
 import { Request } from "express";
-import { UserSugguestion } from "../entity/UserSugguestion";
+import { UserSugguestion } from "../entity/UserSugguestion.js";
 
 export const getRandomSugguestion = async () => {
   const sugguestionRepo = getConnection().getRepository(Sugguestion);

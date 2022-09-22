@@ -1,5 +1,5 @@
 import * as express from 'express'
-import * as sugguestionService from '../../services/suguestionService';
+import * as sugguestionService from '../../services/suguestionService.js';
 
 const sugguestionController = express.Router();
 

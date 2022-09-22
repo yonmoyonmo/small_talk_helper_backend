@@ -1,6 +1,6 @@
 import * as express from 'express'
-import sugguestionController from "./sugguestionController";
-import smallTalkHelperController from "./smallTalkHelperController";
+import sugguestionController from "./sugguestionController.js";
+import smallTalkHelperController from "./smallTalkHelperController.js";
 
 const sugguestionRouter = express.Router();
 

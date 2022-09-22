@@ -1,7 +1,7 @@
 import * as express from 'express'
-import adminRoutes from "./admin/index";
-import sugguestionRoutes from "./sugguestion/index";
-import donatorRoutes from "./donator/index";
+import adminRoutes from "./admin/index.js";
+import sugguestionRoutes from "./sugguestion/index.js";
+import donatorRoutes from "./donator/index.js";
 
 const router = express.Router();
 

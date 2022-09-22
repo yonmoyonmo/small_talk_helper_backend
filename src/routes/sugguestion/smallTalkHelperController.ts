@@ -1,5 +1,5 @@
 import * as express from 'express'
-import * as smallTalkHelperService from '../../services/smallTalkHelperService';
+import * as smallTalkHelperService from '../../services/smallTalkHelperService.js';
 
 const smallTalkHelperController = express.Router();
 

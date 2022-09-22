@@ -1,5 +1,5 @@
 import * as express from 'express'
-import * as adminService from '../../services/adminService';
+import * as adminService from '../../services/adminService.js';
 import * as jwt from 'jsonwebtoken';
 
 const adminController = express.Router();
